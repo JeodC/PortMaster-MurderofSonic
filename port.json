@@ -1,0 +1,31 @@
+{
+  "version": 3,
+  "name": "tmosonic.zip",
+  "items": [
+    "The Murder of Sonic The Hedgehog.sh",
+    "tmosonic"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "The Murder of Sonic The Hedgehog",
+    "porter": [
+      "Jeod"
+    ],
+    "desc":"Sonic the Hedgehog...was murdered!? Get to the bottom of the mystery in this brand-new adventure!",
+    "desc_md": null,
+    "inst": "Get the game on Steam and copy all the data to `tmosonic/data`.",
+    "inst_md": null,
+    "genres": [
+      "rpg",
+	  "simulation"
+    ],
+    "image": null,
+    "rtr": true,
+    "exp": false,
+    "runtime": null,
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ]
+  }
+}
