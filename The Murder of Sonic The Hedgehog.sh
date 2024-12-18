@@ -30,17 +30,13 @@ export TEXTINPUTINTERACTIVE="Y"        # enables interactive text input mode
 export TEXTINPUTNOAUTOCAPITALS="Y"     # disables automatic capitalization of first letter of words in interactive text input mode
 export TEXTINPUTADDEXTRASYMBOLS="Y"    # enables additional symbols for interactive text input
 
-#export WINEPREFIX=/storage/.wine32
-#export WINEARCH=win32
-
 # Config Setup
-rm -rf ~/.wine64/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog
-ln -s $GAMEDIR/config ~/.wine64/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog
+rm -rf ~/".wine64/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog"
+ln -s $GAMEDIR/config ~/".wine64/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog"
 
 # Run the game
 $GPTOKEYB "The Murder of Sonic The Hedgehog.exe" -c "./tmosonic.gptk" &
 box64 wine64 "./data/The Murder of Sonic The Hedgehog.exe"
-#box86 wine32 game.exe
 
 # Kill processes
 pm_finish
