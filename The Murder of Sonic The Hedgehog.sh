@@ -31,6 +31,7 @@ export TEXTINPUTNOAUTOCAPITALS="Y"     # disables automatic capitalization of fi
 export TEXTINPUTADDEXTRASYMBOLS="Y"    # enables additional symbols for interactive text input
 
 # Config Setup
+mkdir -p $GAMEDIR/config
 rm -rf ~/".wine64/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog"
 ln -s $GAMEDIR/config ~/".wine64/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog"
 
