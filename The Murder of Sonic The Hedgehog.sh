@@ -13,7 +13,7 @@ source $controlfolder/control.txt
 get_controls
 
 # Variables
-GAMEDIR=/$directory/ports/tmosonic
+GAMEDIR="/$directory/windows/tmosonic"
 
 # CD and set permissions
 cd $GAMEDIR
