@@ -14,11 +14,11 @@ get_controls
 
 # Variables
 GAMEDIR="/$directory/windows/tmosonic"
+EXEC="The Murder of Sonic The Hedgehog.exe"
 
-# CD and set permissions
+# CD and set log
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-$ESUDO chmod +x -R $GAMEDIR/*
 
 # Display loading splash
 [ "$CFW_NAME" == "muOS" ] && $ESUDO $GAMEDIR/splash "splash.png" 1
@@ -26,8 +26,17 @@ $ESUDO $GAMEDIR/splash "splash.png" 30000 &
 
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-export WINEPREFIX=~/.wine64
 export WINEDEBUG=-all
+
+# Determine architecture
+if file "$GAMEDIR/data/$EXEC" | grep -q "PE32" && ! file "$GAMEDIR/data/$EXEC" | grep -q "PE32+"; then
+    export WINEARCH=win32
+    export WINEPREFIX=~/.wine32
+elif file "$GAMEDIR/data/$EXEC" | grep -q "PE32+"; then
+    export WINEPREFIX=~/.wine64
+else
+    echo "Unknown file format"
+fi
 
 # Keyboard Entry; edit name here
 export TEXTINPUTPRESET="NAME"          # defines preset text to insert
@@ -40,8 +49,8 @@ mkdir -p $GAMEDIR/config
 bind_directories "$WINEPREFIX/drive_c/users/root/AppData/LocalLow/Sonic Social/The Murder of Sonic The Hedgehog" "$GAMEDIR/config"
 
 # Run the game
-$GPTOKEYB "The Murder of Sonic The Hedgehog.exe" -c "./tmosonic.gptk" &
-box64 wine64 "./data/The Murder of Sonic The Hedgehog.exe"
+$GPTOKEYB "$EXEC" -c "$GAMEDIR/tmosonic.gptk" &
+box64 wine "$GAMEDIR/data/$EXEC"
 
 # Kill processes
 wineserver -k
